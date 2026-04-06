@@ -958,10 +958,11 @@ loadCounters(function(){
   }
 }
 
-window.addEventListener('focus', function() {
-  document.body.style.display = 'none';
-  document.body.offsetHeight;
-  document.body.style.display = '';
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) {
+    window.location.reload();
+  }
+});
 });
 
   const content = document.getElementById('page-doc').innerHTML;
