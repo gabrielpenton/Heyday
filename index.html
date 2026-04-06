@@ -926,43 +926,8 @@ loadCounters(function(){
   });
 });
   function printDoc() {
-  const styles = Array.from(document.styleSheets)
-    .map(sheet => {
-      try { return Array.from(sheet.cssRules).map(r => r.cssText).join('\n'); }
-      catch(e) { return ''; }
-    }).join('\n');
-
-  const content = document.getElementById('page-doc').innerHTML;
-
-  const html = `<!DOCTYPE html>
-<html><head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Heyday Lawns</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>${styles}</style>
-</head><body>${content}<script>window.onload=function(){window.print();}<\/script></body></html>`;
-
-  const w = window.open('', '_blank');
-  if (w) {
-    w.document.write(html);
-    w.document.close();
-  } else {
-    const blob = new Blob([html], {type: 'text/html'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'heyday-quote.html';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
+  window.print();
 }
-
-window.addEventListener('pageshow', function(e) {
-  if (e.persisted) {
-    window.location.reload();
-  }
-});
 });
 
   const content = document.getElementById('page-doc').innerHTML;
