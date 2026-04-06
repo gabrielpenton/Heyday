@@ -926,7 +926,22 @@ loadCounters(function(){
   });
 });
   function printDoc() {
-  window.print();
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    var styles = Array.from(document.styleSheets)
+      .map(function(sheet) {
+        try { return Array.from(sheet.cssRules).map(function(r){ return r.cssText; }).join('\n'); }
+        catch(e) { return ''; }
+      }).join('\n');
+    var content = document.getElementById('page-doc').innerHTML;
+    var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Heyday Lawns</title><style>' + styles + '</style></head><body>' + content + '</body></html>';
+    var blob = new Blob([html], {type: 'text/html'});
+    var url = URL.createObjectURL(blob);
+    window.location.href = url;
+  } else {
+    window.print();
+  }
+}
 }
 });
 
