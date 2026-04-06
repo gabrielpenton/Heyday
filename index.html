@@ -915,20 +915,23 @@ function descInit(taEl){
   taEl.addEventListener('blur', function(){ setTimeout(function(){ dd.classList.remove('open'); },200); });
 }
 
-// ── INIT: load everything from Firebase ──
+// — INIT: load everything from Firebase —
 setSyncBar('Connecting to cloud...');
 loadCounters(function(){
-  loadClients();
-  loadDescs();
-  loadRecords(function(){
-    setSyncBar('Synced', 'synced');
-    setTimeout(function(){ document.getElementById('sync-bar').style.display='none'; }, 3000);
-  });
+loadClients();
+loadDescs();
+loadRecords(function(){
+setSyncBar('Synced', 'synced');
+setTimeout(function(){
+document.getElementById('sync-bar').style.display='none';
+}, 3000);
 });
-  function printDoc() {
-  window.print();
+});
+
+// Print function - must be outside any callbacks
+function printDoc() {
+window.print();
 }
-});
 </script>
 </body>
 </html>
