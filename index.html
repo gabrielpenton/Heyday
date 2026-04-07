@@ -724,11 +724,10 @@ function pad(n){ return String(n).padStart(3,'0'); }
       notes:document.getElementById('notes').value,
       frequency:currentDoc==='quote'?document.getElementById('qt-frequency').value:'',
       total:total, lines:lines, paid:false, approved:false
-    };
-728    recAdd(rec);
-729    printDoc();
-730    }
-731  }
+recAdd(rec); 
+printDoc();
+  }
+  }
 function renderRecords(){
   var invoices=allRecords.filter(function(r){ return r.type==='invoice'; });
   var quotes  =allRecords.filter(function(r){ return r.type==='quote'; });
