@@ -927,11 +927,7 @@ document.getElementById('sync-bar').style.display='none';
 
 // Print function - must be outside any callbacks
 function printDoc() {
-  if (/iPhone|iPad/i.test(navigator.userAgent)) {
-    setTimeout(function(){ window.print(); }, 100);
-  } else {
-    window.print();
-  }
+  window.print();
 }
 </script>
 </body>
