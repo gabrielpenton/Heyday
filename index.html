@@ -697,7 +697,6 @@ function resetDoc(){
   else acInit('qt-client','qt-client-ac');
 }
 function pad(n){ return String(n).padStart(3,'0'); }
-  window.print();
   // save descs
   document.querySelectorAll('.line-item textarea.desc').forEach(function(ta){
     if(ta.value.trim()) descSaveItem(ta.value.trim());
@@ -725,10 +724,10 @@ function pad(n){ return String(n).padStart(3,'0'); }
       frequency:currentDoc==='quote'?document.getElementById('qt-frequency').value:'',
       total:total, lines:lines, paid:false, approved:false
     };
-    recAdd(rec);
-  }
-}
-
+728    recAdd(rec);
+729    printDoc();
+730    }
+731  }
 function renderRecords(){
   var invoices=allRecords.filter(function(r){ return r.type==='invoice'; });
   var quotes  =allRecords.filter(function(r){ return r.type==='quote'; });
