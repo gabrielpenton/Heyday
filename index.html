@@ -697,6 +697,7 @@ function resetDoc(){
   else acInit('qt-client','qt-client-ac');
 }
 function pad(n){ return String(n).padStart(3,'0'); }
+  function doPrint(){
   // save descs
   document.querySelectorAll('.line-item textarea.desc').forEach(function(ta){
     if(ta.value.trim()) descSaveItem(ta.value.trim());
