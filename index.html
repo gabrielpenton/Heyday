@@ -697,8 +697,6 @@ function resetDoc(){
   else acInit('qt-client','qt-client-ac');
 }
 function pad(n){ return String(n).padStart(3,'0'); }
-
-function doPrint(){
   window.print();
   // save descs
   document.querySelectorAll('.line-item textarea.desc').forEach(function(ta){
@@ -930,7 +928,11 @@ document.getElementById('sync-bar').style.display='none';
 
 // Print function - must be outside any callbacks
 function printDoc() {
-window.print();
+  if (/iPhone|iPad/i.test(navigator.userAgent)) {
+    setTimeout(function(){ window.print(); }, 100);
+  } else {
+    window.print();
+  }
 }
 </script>
 </body>
