@@ -267,7 +267,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
     </div>
     <div class="toolbar-right">
       <button class="btn btn-sm" id="new-btn" onclick="newDoc()">New</button>
-      <button class="btn btn-primary btn-sm" id="print-btn" onclick="printDoc()">Print / Download</button>
+      <button class="btn btn-primary btn-sm" id="print-btn" onclick="doPrint()">Print / Download</button>
     </div>
   </div>
   <div class="view-mode-bar hidden" id="view-mode-bar">
@@ -699,6 +699,7 @@ function resetDoc(){
 function pad(n){ return String(n).padStart(3,'0'); }
 
 function doPrint(){
+  window.print();
   // save descs
   document.querySelectorAll('.line-item textarea.desc').forEach(function(ta){
     if(ta.value.trim()) descSaveItem(ta.value.trim());
